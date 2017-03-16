@@ -8,6 +8,13 @@ body {
 h3 {
 	font-weight: 300;
 }
+.margin-fix {
+	margin-top:2.5rem;
+}
+@media only screen and (min-width: 75em)
+{
+
+}
 .header {
 	width: 100%;
 	height: 700px;
@@ -28,7 +35,7 @@ h3 {
 .movie a img {
 	width: 100%;
 	height: auto;
-	max-height:500px;
+	max-height:450px;
 }
 .goAway {
 	display: none!important;
@@ -53,5 +60,7 @@ h3 {
 	font-size: 24px;
 	text-align: center;
 }
-.category {
+.timeline {
+	width:100px;
+	height: 100vh;
 }

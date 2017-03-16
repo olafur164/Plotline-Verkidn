@@ -20,8 +20,15 @@ const image_uri = 'https://image.tmdb.org/t/p/'
 
 const Home = () => (
   <div>
-    <Category query="movie/popular" />
-    <Category query="movie/popular" />
+  	<div className="row">
+	  	<div className="col-lg-2 timeline">
+	  	
+	  	</div>
+	  	<div className="col-lg-10 categories">
+	    	<Category query="movie/popular" />
+	    	<Category query="movie/popular" />
+	    </div>
+	</div>
   </div>
 )
 
@@ -177,6 +184,7 @@ ReactDOM.render(
 					<p>plotline</p>
 				</div>
 	      	</div>
+	      	<div className="margin-fix"></div>
 	      	<Route exact path="/" component={Home}/>
 	      	<Route path="/movie/:id" component={MoviePage}/>
 	    </div>
