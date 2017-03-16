@@ -30,5 +30,6 @@ right: -8px;
 .slick-prev {
 left: -8px;
 }
-
+@media screen and (max-width: 478px){
 	
+	}
