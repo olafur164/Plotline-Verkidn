@@ -27,3 +27,14 @@
 .goAway {
 	display: none!important;
 }
+.nav {
+	min-height: 56px;
+	width: 100%;
+	position: fixed;
+	box-shadow: 0 2px 8px #868686;
+	z-index:9999;
+	background-color:#fff;
+}
+.margin-fix {
+	
+}

@@ -11,6 +11,7 @@ import {
 
 require('./css/flexboxgrid-min.css');
 require('./css/main.css');
+require('./css/main-mk.css');
 
 
 const base_uri = 'https://api.themoviedb.org/3/'
@@ -166,13 +167,9 @@ const MoviePage = ({ match }) => (
 ReactDOM.render(
 	<Router>
 	    <div>
-	      	<ul>
-		        <li><Link to="/">Home</Link></li>
-		        <li><Link to="/about">About</Link></li>
-	      	</ul>
-
-	      	<hr/>
-
+	      	<div className="nav">
+	      	</div>
+	      	<div className="margin-fix"></div>
 	      	<Route exact path="/" component={Home}/>
 	      	<Route path="/movie/:id" component={MoviePage}/>
 	    </div>
