@@ -8,27 +8,69 @@ import {
   Link
 } from 'react-router-dom'
 
+require('./css/flexboxgrid-min.css');
+require('./css/main.css');
+
+
+const base_uri = 'https://api.themoviedb.org/3/'
+const api_key = '5caf95feed570ed071f7cb0839668613'
+const image_uri = 'https://image.tmdb.org/t/p/'
+
 const Home = () => (
   <div>
     <h2>Home</h2>
+    <Category query="movie/popular" />
   </div>
 )
+class Category extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			data: {}
+		}
+	}
+	componentDidMount() {
+		fetch(`${base_uri}${this.props.query}?api_key=${api_key}`)
+		    .then(res => {
+		    	return res.json();
+		    })
+		    .then(json => {
+		    	const data = json;
+		    	return data;
+		    });
+	}
+	render() {
+		return (
+			<div>haha
+			</div>
+		);
+	}
+}
+/*
+function getPopular() {
+	const data = fetch(base_uri + `movie/popular?api_key=${api_key}`)
+		    .then(res => {
+		    	return res.json();
+		    })
+		    .then(json => {
+		    	const data = json;
+		    	return data;
+		    });
+ 	return data
+
+}
+console.log(getPopular());
+*/
 class Movie extends React.Component {
 	constructor(props) {
 		super(props)
-		this.base_uri = 'https://api.themoviedb.org/3/'
-		this.api_key = '5caf95feed570ed071f7cb0839668613'
-		this.image_uri = 'https://image.tmdb.org/t/p/'
-		this.image_options = {
-			Original: 'original'
-		}
 		this.state = {
 			data: {},
 			genres: []
 		}
 	}
 	componentDidMount() {
-		fetch(this.base_uri + `movie/${this.props.movieid}?api_key=${this.api_key}`)
+		fetch(`${base_uri}movie/${this.props.movieid}?api_key=pi_key}`)
 		    .then(res => {
 		    	return res.json();
 		    })
