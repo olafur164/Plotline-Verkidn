@@ -43,11 +43,48 @@ class Category extends React.Component {
 	}
 	render() {
 		let settings = {
-	      dots: true,
-	      infinite: true,
-	      speed: 500,
-	      slidesToShow: 5,
-	      slidesToScroll: 1
+		    infinite: false,
+		    speed: 300,
+		    slidesToShow: 3.5,
+		    centerMode: false,
+		    centerPadding: '40px',
+		    responsive:[	
+			  	{
+			        breakpoint: 1920,
+			        settings: {
+			          slidesToShow: 3.5,
+			          slidesToScroll: 2,
+			          infinite: false,
+			        }
+			      },
+			      {
+			        breakpoint: 1024,
+			        settings: {
+			          centerPadding: '20px',
+			          slidesToShow: 3.5,
+			          slidesToScroll: 2,
+			          infinite: false,
+			        }
+			      },
+			      {
+			        breakpoint: 768,
+			        settings: {
+			          slidesToShow: 2,
+			          centerPadding: '20px',
+			          slidesToScroll: 1
+			        }
+			      },
+			      {
+			        breakpoint: 480,
+			        settings: {
+			        	infinite:true,
+			        	centerMode: true,
+			          slidesToShow: 1,
+			          slidesToScroll: 1,
+			          centerPadding: '20px'
+			        }
+			      }
+		      ]
 	    };
 		const image = `${image_uri}w500`
 		return (
