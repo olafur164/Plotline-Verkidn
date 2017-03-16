@@ -2,6 +2,7 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom'
 import redux from 'react-redux'
+import Slider from 'react-slick';
 import {
   BrowserRouter as Router,
   Route,
@@ -26,7 +27,7 @@ class Category extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			data: {}
+			data: []
 		}
 	}
 	componentDidMount() {
@@ -35,13 +36,32 @@ class Category extends React.Component {
 		    	return res.json();
 		    })
 		    .then(json => {
-		    	const data = json;
-		    	return data;
+		    	const data = json.results.map(obj => obj);
+		    	this.setState({data});
+		    	console.log(this.state);
 		    });
 	}
 	render() {
+		let settings = {
+	      dots: true,
+	      infinite: true,
+	      speed: 500,
+	      slidesToShow: 5,
+	      slidesToScroll: 1
+	    };
+		const image = `${image_uri}w500`
 		return (
-			<div>haha
+			<div>
+				<div className="category">
+					<Slider {...settings}>
+						<div></div>
+						{this.state.data.map(movie => 
+						<div className="movie" key={movie.id}>
+							<img className="img-responsive" src={image + movie.poster_path}/>
+						</div>
+		  				) || <div></div>}
+		  			</Slider>
+	  			</div>
 			</div>
 		);
 	}
