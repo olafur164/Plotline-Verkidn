@@ -9,7 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-require('./css/flexboxgrid-min.css');
+require('./css/bootstrap.css');
 require('./css/main.css');
 require('./css/main-mk.css');
 
@@ -19,14 +19,14 @@ const api_key = '5caf95feed570ed071f7cb0839668613'
 const image_uri = 'https://image.tmdb.org/t/p/'
 
 const Home = () => (
-  <div>
+  <div className="container-fluid">
   	<div className="row">
-	  	<div className="col-lg-2 timeline">
-	  	
+	  	<div className="col-xs-1 col-lg-2 timeline">
+
 	  	</div>
-	  	<div className="col-lg-10 categories">
-	    	<Category query="movie/popular" />
-	    	<Category query="movie/popular" />
+	  	<div className="col-xs-11 col-lg-10 categories">
+	    	<Category query="movie/upcoming" />
+	    	<Category query="movie/top_rated" />
 	    </div>
 	</div>
   </div>
@@ -51,14 +51,13 @@ class Category extends React.Component {
 	}
 	render() {
 		let settings = {
-		    infinite: false,
+		    infinite: true,
 		    responsive:[	
 			  	{
 			        breakpoint: 1920,
 			        settings: {
 			          	slidesToShow: 4.5,
-			          	slidesToScroll: 2,
-			          	infinite: false,
+			          	slidesToScroll: 1,
 			        }
 			      },
 			      {
@@ -66,8 +65,7 @@ class Category extends React.Component {
 			        settings: {
 			          	centerPadding: '20px',
 			          	slidesToShow: 3.5,
-			          	slidesToScroll: 2,
-			          	infinite: false,
+			          	slidesToScroll: 1,
 			        }
 			      },
 			      {
@@ -81,7 +79,6 @@ class Category extends React.Component {
 			      {
 			        breakpoint: 480,
 			        settings: {
-			        	infinite:true,
 			          	slidesToShow: 1,
 			          	slidesToScroll: 1,
 			        }
