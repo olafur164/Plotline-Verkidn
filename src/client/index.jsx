@@ -150,31 +150,55 @@ class Movie extends React.Component {
 	render() {
 	  	return (
 	  		<div>
-		  		<div className="plotline-head">
-		  			<div id="plotline-title">
-		  				<h1>{this.state.data.title}</h1>
-		  			</div>
-		  			<div id="plotline-year">
-		  				<h2>{this.state.data.release_date}</h2>
-		  			</div>
-		  		</div>
-		  		<div className="plotline-poster">
-		  			<img src={`${image_uri}w500/${this.state.data.poster_path}`} />
-		  		</div>
-		  		<div className="plotline-plot">
-		  			<h3>Plot Summary</h3>
-		  			<div className="plotline-genres">
-		  				{this.state.genres.map(genre => 
-		  					<span key={genre.id}>{genre.name} </span>
-		  				)}
-		  			</div>
-		  			<div className="plotline-runtime">
-		  				{this.state.data.runtime}
-		  			</div>
-		  			<div className="plotline-overview">
-		  				{this.state.data.overview}
-		  			</div>
-		  		</div>
+			  	<div className="row">
+				  	<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
+				  		<div className="timeline">
+				  			<div className="timeline-dot">
+				  				<img src={movieimg} />
+				  			</div>
+				  			<div className="timeline-line"></div>
+				  			<div className="timeline-dot" id="second">
+				  				<img src={movieimg} />
+				  			</div>
+				  			<div className="timeline-line" id="second"></div>
+				  		</div>
+				  	</div>
+				  	<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11">
+				  		<div className="row">
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					  			<div id="plotline-title">
+					  				<h1>{this.state.data.title}</h1>
+					  			</div>
+					  			<div id="plotline-year">
+					  				{this.state.data.release_date}
+					  			</div>
+					  			<div className="margin-fix"></div>
+					  		</div>
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+						  		<div className="plotline-poster">
+						  			<img className="img-responsive" src={`${image_uri}w500/${this.state.data.poster_path}`} />
+						  		</div>
+						  	</div>
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+						  		<div className="plotline-plot">
+						  			<h3 className="plot-summary">Plot Summary</h3>
+							  			<div className="plotline-information">
+						  				{this.state.genres.map(genre => 
+						  					<span key={genre.id}>{genre.name}, </span>
+						  				)}
+						  				<br/>
+						  				<span>
+							  				Runtime:{this.state.data.runtime}
+							  			</span>
+							  			</div>
+						  			<div className="plotline-overview">
+						  				{this.state.data.overview}
+						  			</div>
+						  		</div>
+						  	</div>
+					  	</div>
+				  	</div>
+				</div>
 	  		</div>
 	  	);
 	}
