@@ -16,6 +16,7 @@ h3 {
 }
 .img-responsive {
 	width: 100%;
+	height:auto;
 }
 .timeline {
 	position: absolute;
@@ -80,7 +81,31 @@ h3 {
 	padding-right: 0;
 	padding-left:0;
 }
+.plotline-year h2{
+	font-size: 20px;
+	font-weight: 300;
+}
+.plot-summary {
+	margin-top:20px;
+	margin-left: 0px;
+	margin-bottom:0px;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 1;
 
+}
+.plotline-information {
+	font-style: italic;
+	font-weight: 300;
+	opacity: .5;
+	font-size: 20px;
+	line-height: 1.2;
+	margin-bottom:50px;
+}
+.plotline-overview {
+	max-width: 800px;
+	font-size: 20px;
+}
 @media screen and (min-width: 1024px){
 	.movie img {
 		margin-left:80px;
