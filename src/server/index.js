@@ -5,7 +5,7 @@ import { templateString } from './template';
 const app = express();
 const port: number = +(process.env.PORT || '4000');
 
-let bundleUrl = `http://10.203.62.175:${port}/static/client.js`;
+let bundleUrl = `http://localhost:${port}/static/client.js`;
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
