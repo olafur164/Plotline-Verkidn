@@ -31,7 +31,7 @@
 	.slick-arrow {
         display: block;
         position: absolute;
-        height: 354 px;
+        height: 233px;
         top: 6px;
         border: none;
         background: #0af;
@@ -46,7 +46,7 @@
     .slick-arrow {
         display: block;
         position: absolute;
-        height: 404px;
+        height: 352px;
         top: 6px;
         border: none;
         background: #0fa;
@@ -56,12 +56,53 @@
         z-index: 99;
     }
 }
-
+@media screen and (min-width: 1099px){ /*++++++++++ smallest desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 315px;
+        top: 6px;
+        border: none;
+        background: #0fa;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+@media screen and (min-width: 1199px){ /*++++++++++ smaller desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 282px;
+        top: 6px;
+        border: none;
+        background: #475;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+@media screen and (min-width: 1279px){ /*++++++++++ smaller desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 265px;
+        top: 6px;
+        border: none;
+        background: #475;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
 @media screen and (min-width: 1366px){ /*++++++++++ smaller desktop ++++++++++++*/
     .slick-arrow {
         display: block;
         position: absolute;
-        height: 345px;
+        height: 283px;
         top: 6px;
         border: none;
         background: #475;
@@ -72,14 +113,28 @@
     }
 }
 
-@media screen and (min-width: 1435px){ /*++++++++++ desktop ++++++++++++*/
+@media screen and (min-width: 1440px){ /*++++++++++ desktop ++++++++++++*/
     .slick-arrow {
         display: block;
         position: absolute;
-        height: 392px;
+        height: 297px;
         top: 6px;
         border: none;
         background: #a0f;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+@media screen and (min-width: 1680px){ /*++++++++++ desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 493px;
+        top: 6px;
+        border: none;
+        background: #aff;
         opacity: 1;
         width: 50px;
         transition: 1s;
