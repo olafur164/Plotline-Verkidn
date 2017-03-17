@@ -7,17 +7,20 @@
 .slick-arrow {
 	display: block;
     position: absolute;
-    height: 230px;
-    top: 0;
+    height: 452px;
+    top: 12px;
     border: none;
     background: #fff;
     opacity: .1;
-    width: 30px;
+    width: 50px;
+    transition: 1s;
+    z-index: 99;
 }
 .slick-arrow:hover {
  content: " ";
  opacity: .7;
  background: #fff;
+ z-index: 99;
 }
 .slick-next {
 right: -8px;
