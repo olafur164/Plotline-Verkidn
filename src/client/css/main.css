@@ -120,6 +120,8 @@ h3 {
 @media screen and (min-width: 1024px){
 	.movie img {
 		margin-left:80px;
+		min-height:420px;
+		max-height:420px;
 	}
 }
 @media screen and (min-width: 1680px){
