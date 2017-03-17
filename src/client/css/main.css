@@ -43,6 +43,7 @@ h3 {
 	width:15px; 
 	margin-left:25px;
 	position:absolute;
+	z-index: 9999;
 	background-color: #8CB5D7;
 }
 #movie-second {
@@ -122,7 +123,7 @@ h3 {
 	max-height: 120px;
 }
 .category {
-	margin-bottom:50px;
+	margin-bottom: 34px;
 }
 @media screen and (min-width: 1024px){
 	.movie img {

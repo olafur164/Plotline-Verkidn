@@ -135,6 +135,10 @@ class App extends React.Component {
 			  				<img src={movieimg} />
 			  			</div>
 			  			<div className="timeline-line" id="second"></div>
+			  			<div className="timeline-dot" id="third">
+			  				<img src={movieimg} />
+			  			</div>
+			  			<div className="timeline-line" id="third"></div>
 			  		</div>
 			  	</div>
 	  			<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11 categories">
