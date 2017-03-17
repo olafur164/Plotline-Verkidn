@@ -8,27 +8,82 @@
 	display: block;
     position: absolute;
     height: 452px;
-    top: 12px;
+    top: 6px;
     border: none;
     background: #fff;
-    opacity: .1;
+    opacity: 1;
     width: 50px;
     transition: 1s;
     z-index: 99;
 }
 .slick-arrow:hover {
- content: " ";
- opacity: .7;
- background: #fff;
- z-index: 99;
+     content: " ";
+    opacity: .7;
+    background: #fff;
+    z-index: 99;
 }
 .slick-next {
-right: -8px;
+    right: -15px;
 }
 
-.slick-prev {
-left: -8px;
+
+@media screen and (min-width: 478px){ /*++++++++++ mobile ++++++++++++*/
+	.slick-arrow {
+        display: block;
+        position: absolute;
+        height: 354 px;
+        top: 6px;
+        border: none;
+        background: #0af;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
 }
-@media screen and (max-width: 478px){
-	
-	}
+
+@media screen and (min-width: 1024px){ /*++++++++++ smallest desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 404px;
+        top: 6px;
+        border: none;
+        background: #0fa;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+
+@media screen and (min-width: 1366px){ /*++++++++++ smaller desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 345px;
+        top: 6px;
+        border: none;
+        background: #475;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+
+@media screen and (min-width: 1435px){ /*++++++++++ desktop ++++++++++++*/
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        height: 392px;
+        top: 6px;
+        border: none;
+        background: #a0f;
+        opacity: 1;
+        width: 50px;
+        transition: 1s;
+        z-index: 99;
+    }
+}
+
