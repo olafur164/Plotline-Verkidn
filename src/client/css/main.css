@@ -88,7 +88,7 @@ h3 {
 }
 @media screen and (min-width: 1680px){
 	.movie img {
-		min-height:490;
+		min-height:490px;
 		max-height:490px;
 	}
 }
