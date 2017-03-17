@@ -122,6 +122,10 @@ h3 {
 	max-width: 100px;
 	max-height: 120px;
 }
+.movie:hover {
+	transform: scale(1.075);
+	transition: all .8s ease;
+}
 .category {
 	margin-bottom: 34px;
 }
@@ -135,6 +139,5 @@ h3 {
 @media screen and (min-width: 1680px){
 	.movie img {
 		min-height:490px;
-		max-height:490px;
 	}
 }
