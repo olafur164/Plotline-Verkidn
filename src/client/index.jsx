@@ -9,7 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-require('./css/bootstrap.css');
+require('./css/flexboxgrid-min.css');
 require('./css/main.css');
 require('./css/main-mk.css');
 
@@ -19,12 +19,12 @@ const api_key = '5caf95feed570ed071f7cb0839668613'
 const image_uri = 'https://image.tmdb.org/t/p/'
 
 const Home = () => (
-  <div className="container-fluid">
+  <div className="">
   	<div className="row">
-	  	<div className="col-xs-1 col-lg-2 timeline">
+	  	<div className="col-xs-2 col-lg-2 timeline">
 
 	  	</div>
-	  	<div className="col-xs-11 col-lg-10 categories">
+	  	<div className="col-xs-10 col-lg-10 categories">
 	    	<Category query="movie/upcoming" />
 	    	<Category query="movie/top_rated" />
 	    </div>
@@ -52,8 +52,14 @@ class Category extends React.Component {
 	render() {
 		let settings = {
 		    infinite: true,
-		    responsive:[	
+		    responsive:[
 			  	{
+			        breakpoint: 4600,
+			        settings: {
+			          	slidesToShow: 6.5,
+			          	slidesToScroll: 1,
+			        }
+			      },			  	{
 			        breakpoint: 1920,
 			        settings: {
 			          	slidesToShow: 4.5,
@@ -79,7 +85,8 @@ class Category extends React.Component {
 			      {
 			        breakpoint: 480,
 			        settings: {
-			          	slidesToShow: 1,
+			        	centerMode: true,
+			          	slidesToShow: 0.5,
 			          	slidesToScroll: 1,
 			        }
 			      }
