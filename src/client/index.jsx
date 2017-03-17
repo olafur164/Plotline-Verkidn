@@ -138,6 +138,7 @@ class App extends React.Component {
 			  		</div>
 			  	</div>
 	  			<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11 categories">
+					<Category query="discover/movie" name="Popular" />
 					<Category query="movie/upcoming" name="Upcoming" />
 					<Category query="movie/top_rated" name="Top Rated" />
 				</div>
