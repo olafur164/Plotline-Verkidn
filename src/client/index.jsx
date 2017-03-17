@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import movieimg from './img/movie.png'
 require('./css/flexboxgrid-min.css');
 require('./css/main.css');
 require('./css/main-mk.css');
@@ -21,10 +22,19 @@ const image_uri = 'https://image.tmdb.org/t/p/'
 const Home = () => (
   <div className="">
   	<div className="row">
-	  	<div className="col-xs-2 col-lg-2 timeline">
-
+	  	<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
+	  		<div className="timeline">
+	  			<div className="timeline-dot">
+	  				<img src={movieimg} />
+	  			</div>
+	  			<div className="timeline-line"></div>
+	  			<div className="timeline-dot" id="second">
+	  				<img src={movieimg} />
+	  			</div>
+	  			<div className="timeline-line" id="second"></div>
+	  		</div>
 	  	</div>
-	  	<div className="col-xs-10 col-lg-10 categories">
+	  	<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11 categories">
 	    	<Category query="movie/upcoming" />
 	    	<Category query="movie/top_rated" />
 	    </div>
@@ -77,7 +87,7 @@ class Category extends React.Component {
 			      {
 			        breakpoint: 768,
 			        settings: {
-			          	slidesToShow: 2.5,
+			          	slidesToShow: 2	,
 			          	centerPadding: '20px',
 			          	slidesToScroll: 1
 			        }
@@ -85,8 +95,9 @@ class Category extends React.Component {
 			      {
 			        breakpoint: 480,
 			        settings: {
+			          	centerPadding: '10px',
 			        	centerMode: true,
-			          	slidesToShow: 0.5,
+			          	slidesToShow: 2.5,
 			          	slidesToScroll: 1,
 			        }
 			      }
