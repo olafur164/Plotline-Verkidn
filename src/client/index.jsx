@@ -173,6 +173,7 @@ class Movie extends React.Component {
 	}
 	renderTimeLine(props) {
 		return (
+  			<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
 	  		<div className="timeline">
 	  			<div className="timeline-dot">
 	  				<img src={movieimg} />
@@ -183,11 +184,12 @@ class Movie extends React.Component {
 	  			</div>
 	  			<div className="timeline-line" id="movie-second"></div>
 	  		</div>
+	  		</div>
 		);
 	}
 	renderTop() {
 		return (
-			<div>
+			<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	  			<div id="plotline-title">
 	  				<h1>{this.state.data.title}</h1>
 	  			</div>
@@ -200,89 +202,103 @@ class Movie extends React.Component {
 	}
 	renderPoster() {
 		return (
-	  		<div className="plotline-poster">
-	  			<img className="img-responsive" src={`${image_uri}w500/${this.state.data.poster_path}`} />
-	  		</div>
+			<div className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+		  		<div className="plotline-poster">
+		  			<img className="img-responsive" src={`${image_uri}w500/${this.state.data.poster_path}`} />
+		  		</div>
+		  	</div>
+		);
+	}
+	renderSummary() {
+		return(
+	  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+		  		<div className="plotline-plot">
+		  			<h3 className="plot-summary">Plot Summary</h3>
+			  			<div className="plotline-information">
+		  				{this.state.genres.map(genre => 
+		  					<span key={genre.id}>{genre.name}, </span>
+		  				)}
+		  				<br/>
+		  				<span>
+			  				Runtime:{this.state.data.runtime}
+			  			</span>
+			  			</div>
+		  			<div className="plotline-overview">
+		  				{this.state.data.overview}
+		  			</div>
+		  		</div>
+		  	</div>
+		);
+	}
+	renderCast() {
+		return(
+	  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		  		<div className="plotline-cast">
+		  			<h3 className="plot-summary">Top Billed Cast</h3>
+		  			<div className="cast">
+			  			<div className="container-fluid">
+				  			<div className="row">
+			  				{this.state.cast.map((actor, i)=> 
+			  					actor.cast_id < 12 &&
+			  					<div className="actor" key={actor.cast_id}>
+			  						<img className="img-responsive" src={image_uri + 'w500' + actor.profile_path} />
+			  						<div className="actor-name">{actor.name}</div>
+			  					</div>
+			  				)}
+				  			</div>
+			  			</div>
+		  			</div>
+		  		</div>
+		  	</div>
+		);
+	}
+	renderSimilar() {
+		return(
+			<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		  		<div className="plotline-Similar">
+		  			<h3 className="plot-summary">Similar Movies</h3>
+		  			<div className="container">
+		  				<div className="similar">
+		  					<div className="row">
+								{this.state.similar.map((movie, i) => 
+									{
+										if(i < 3) {
+											return (
+											<div className="col-lg-4 similar-movie" key={movie.id}>
+												<Link to={"/movie/" + movie.id}>
+													<img className="img-responsive" src={image_uri + 'w500' + movie.poster_path}/>
+												</Link>
+											</div>
+											);
+										}
+									}
+			  					)}
+		  					</div>
+			  			</div>
+		  			</div>
+		  		</div>
+		  	</div>
+		);
+	}
+	renderMovie() {
+		return (
+			<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11">
+				<div className="row">
+					{this.renderTop()}
+					{this.renderPoster()}
+					{this.renderSummary()}
+					{this.renderCast()}
+					{this.renderSimilar()}
+				</div>
+			</div>
 		);
 	}
 	render() {
 	  	return (
-	  		<div>
 			  	<div className="row">
-		  			<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
-				  		{this.renderTimeLine()}
-		  			</div>
-				  	<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11">
-				  		<div className="row">
-					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				  				{this.renderTop()}
-					  		</div>
-					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-						  		{this.renderPoster()}
-						  	</div>
-					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-						  		<div className="plotline-plot">
-						  			<h3 className="plot-summary">Plot Summary</h3>
-							  			<div className="plotline-information">
-						  				{this.state.genres.map(genre => 
-						  					<span key={genre.id}>{genre.name}, </span>
-						  				)}
-						  				<br/>
-						  				<span>
-							  				Runtime:{this.state.data.runtime}
-							  			</span>
-							  			</div>
-						  			<div className="plotline-overview">
-						  				{this.state.data.overview}
-						  			</div>
-						  		</div>
-						  	</div>
-					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						  		<div className="plotline-cast">
-						  			<h3 className="plot-summary">Top Billed Cast</h3>
-						  			<div className="cast">
-							  			<div className="container-fluid">
-								  			<div className="row">
-							  				{this.state.cast.map((actor, i)=> 
-							  					actor.cast_id < 12 &&
-							  					<div className="actor" key={actor.cast_id}>
-							  						<img className="img-responsive" src={image_uri + 'w500' + actor.profile_path} />
-							  						<div className="actor-name">{actor.name}</div>
-							  					</div>
-							  				)}
-								  			</div>
-							  			</div>
-						  			</div>
-						  		</div>
-						  	</div>
-					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						  		<div className="plotline-Similar">
-						  			<h3 className="plot-summary">Similar Movies</h3>
-						  			<div className="container">
-						  				<div className="similar">
-						  					<div className="row">
-												{this.state.similar.map((movie, i) => 
-													{
-														if(i < 3) {
-															return (
-															<div className="col-lg-4 similar-movie" key={movie.id}>
-																<Link to={"/movie/" + movie.id}>
-																	<img className="img-responsive" src={image_uri + 'w500' + movie.poster_path}/>
-																</Link>
-															</div>
-															);
-														}
-													}
-							  					)}
-						  					</div>
-							  			</div>
-						  			</div>
-						  		</div>
-						  	</div>
-					  	</div>
-				  	</div>
+			  		{this.renderTimeLine()}
+			  		{this.renderMovie()}
 				</div>
-	  		</div>
 	  	);
 	}
 }
