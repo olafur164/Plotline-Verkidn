@@ -130,24 +130,70 @@ class Movie extends React.Component {
 		super(props)
 		this.state = {
 			data: {},
-			genres: []
+			genres: [],
+			similar: [],
+			cast: []
 		}
 	}
 	componentDidMount() {
-		fetch(`${base_uri}movie/${this.props.movieid}?api_key=${api_key}`)
+		fetch(`${base_uri}movie/${this.props.movieid}?api_key=${api_key}&append_to_response=videos,images,credits,similar,images`)
 		    .then(res => {
 		    	return res.json();
 		    })
 		    .then(json => {
 		    	const data = json;
 		    	const genres = data.genres.map(obj => obj);
-		    	console.log(data);
-		    	this.setState({data, genres});
+		    	const cast = data.credits.cast.map(obj => obj);
+		    	const similar = data.similar.results.map(obj => obj);
+		    	this.setState({data, genres, similar, cast});
 		    	console.log(this.state);
 		    });
 	}
 	
 	render() {
+		let settings = {
+		    infinite: true,
+		    responsive:[
+			  	{
+			        breakpoint: 4600,
+			        settings: {
+			          	slidesToShow: 6.5,
+			          	slidesToScroll: 1,
+			        }
+			      },			  	{
+			        breakpoint: 1920,
+			        settings: {
+			          	slidesToShow: 2.5,
+			          	slidesToScroll: 1,
+			        }
+			      },
+			      {
+			        breakpoint: 1024,
+			        settings: {
+			          	centerPadding: '20px',
+			          	slidesToShow: 2.5,
+			          	slidesToScroll: 1,
+			        }
+			      },
+			      {
+			        breakpoint: 768,
+			        settings: {
+			          	slidesToShow: 2	,
+			          	centerPadding: '20px',
+			          	slidesToScroll: 1
+			        }
+			      },
+			      {
+			        breakpoint: 480,
+			        settings: {
+			          	centerPadding: '10px',
+			        	centerMode: true,
+			          	slidesToShow: 2.5,
+			          	slidesToScroll: 1,
+			        }
+			      }
+		      ]
+	    };
 	  	return (
 	  		<div>
 			  	<div className="row">
@@ -157,10 +203,10 @@ class Movie extends React.Component {
 				  				<img src={movieimg} />
 				  			</div>
 				  			<div className="timeline-line"></div>
-				  			<div className="timeline-dot" id="second">
+				  			<div className="timeline-dot" id="movie-second">
 				  				<img src={movieimg} />
 				  			</div>
-				  			<div className="timeline-line" id="second"></div>
+				  			<div className="timeline-line" id="movie-second"></div>
 				  		</div>
 				  	</div>
 				  	<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11">
@@ -193,6 +239,44 @@ class Movie extends React.Component {
 							  			</div>
 						  			<div className="plotline-overview">
 						  				{this.state.data.overview}
+						  			</div>
+						  		</div>
+						  	</div>
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						  		<div className="plotline-cast">
+						  			<h3 className="plot-summary">Top Billed Cast</h3>
+						  			<div className="cast">
+							  			<div className="container-fluid">
+								  			<div className="row">
+							  				{this.state.cast.map(actor => 
+							  					actor.cast_id < 12 &&
+							  					<div className="actor" key={actor.cast_id}>
+							  						<img className="img-responsive" src={image_uri + 'w500' + actor.profile_path} />
+							  						<div className="actor-name">{actor.name}</div>
+							  					</div>
+							  				)}
+								  			</div>
+							  			</div>
+						  			</div>
+						  		</div>
+						  	</div>
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						  		<div className="plotline-Similar">
+						  			<h3 className="plot-summary">Top Billed Cast</h3>
+						  			<div className="container-fluid">
+						  				<div className="similar">
+								  			<Slider {...settings}>
+												<div className="goAway"></div>
+												{this.state.similar.map(movie => 
+													movie.poster_path.length > 0 &&
+													<div className="similar-movie" key={movie.id}>
+														<Link to={"/movie/" + movie.id}>
+															<img className="img-responsive" src={image_uri + 'w500' + movie.poster_path}/>
+														</Link>
+													</div>
+							  					)}
+							  				</Slider>
+							  			</div>
 						  			</div>
 						  		</div>
 						  	</div>

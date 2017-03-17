@@ -45,6 +45,9 @@ h3 {
 	position:absolute;
 	background-color: #8CB5D7;
 }
+#movie-second {
+	margin-top:575px;
+}
 #second {
 	margin-top:575px;
 	background-color: #CBE2CC;
@@ -105,6 +108,14 @@ h3 {
 .plotline-overview {
 	max-width: 800px;
 	font-size: 20px;
+}
+.actor {
+	margin:50px;
+}
+.actor img {
+	border-radius: 40%;
+	max-width: 100px;
+	max-height: 120px;
 }
 @media screen and (min-width: 1024px){
 	.movie img {
