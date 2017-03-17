@@ -14,7 +14,7 @@
     "lint": "yarn lint-server && yarn lint-client",
     "flow-server": "flow src/server/**",
     "flow-client": "flow src/client",
-    "bundle-server": "webpack --config webpack.server.config.js  --history-api-fallback",
+    "bundle-server": "webpack --config webpack.server.config.js",
     "bundle-client": "webpack --config webpack.client.config.js",
     "bundle": "yarn bundle-server && yarn bundle-client",
     "start": "NODE_ENV=production node dist/server/server.js",
