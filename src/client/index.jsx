@@ -97,22 +97,20 @@ class Category extends React.Component {
 	render() {
 		const image = `${image_uri}w500`
 		return (
-			<div>
-				<div className="category"> 
-					<h3>{this.props.name}</h3>
-					<Slider {...settings}>
-						<div className="goAway"></div>
-						{this.state.data.map((movie) => 
-						<div className="movie" key={movie.id}>
-							<Link to={"/movie/" + movie.id}>
-								<img className="img-responsive" src={image + movie.poster_path}/>
-							</Link>
-						</div>
+			<div className="category"> 
+				<h3>{this.props.name}</h3>
+				<Slider {...settings}>
+					<div className="goAway"></div>
+					{this.state.data.map((movie) => 
+					<div className="movie" key={movie.id}>
+						<Link to={"/movie/" + movie.id}>
+							<img className="img-responsive" src={image + movie.poster_path}/>
+						</Link>
+					</div>
 
-		  				) || <div></div>}
-		  			</Slider>
-	  			</div>
-			</div>
+	  				) || <div></div>}
+	  			</Slider>
+  			</div>
 		);
 	}
 }
@@ -219,9 +217,7 @@ class Movie extends React.Component {
 				  				{this.renderTop()}
 					  		</div>
 					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-						  		<div className="plotline-poster">
-						  			<img className="img-responsive" src={`${image_uri}w500/${this.state.data.poster_path}`} />
-						  		</div>
+						  		{this.renderPoster()}
 						  	</div>
 					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
 						  		<div className="plotline-plot">
