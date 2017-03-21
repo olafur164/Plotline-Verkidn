@@ -62,6 +62,7 @@ let settings = {
 
 const Nav = () => (
   	<div className="nav">
+  		<Link className="logolink" to={"/"}>
   		<div className="logo">
 			<svg viewBox="148 10 26 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 			    <defs></defs>
@@ -71,12 +72,45 @@ const Nav = () => (
 			</svg>
 			<p>plotline</p>
 		</div>
+		</Link>
+		<div className="search">
+			<Search />
+		</div>
   	</div>
 
+)
+const Footer = () => (
+	<div className="footer">
+	</div>
 )
 const MoviePage = ({ match }) => (
   	<Movie movieid={match.params.id} />
 )
+class Search extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: ''}
+		this.handleChange = this.handleChange.bind(this);
+	}
+	handleChange(event) {
+		if (event.target.value.length > 0) {
+			fetch(`${base_uri}search/movie?api_key=${api_key}&query=${event.target.value}`)
+			    .then(res => {
+			    	return res.json();
+			    })
+			    .then(json => {
+			    	const data = json.results.map(obj => obj);
+			    	this.setState({data: data});
+			    	console.log(this.state);
+			    });
+		}
+	}
+	render() {
+		return (
+			<input type="text" onChange={this.handleChange} placeholder="Search for a Movie" />
+		);
+	}
+}
 class Category extends React.Component {
 	constructor(props) {
 		super(props)
@@ -124,28 +158,32 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-		  	<div className="row">
-			  	<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
-			  		<div className="timeline">
-			  			<div className="timeline-dot">
-			  				<img src={movieimg} />
-			  			</div>
-			  			<div className="timeline-line"></div>
-			  			<div className="timeline-dot" id="second">
-			  				<img src={movieimg} />
-			  			</div>
-			  			<div className="timeline-line" id="second"></div>
-			  			<div className="timeline-dot" id="third">
-			  				<img src={movieimg} />
-			  			</div>
-			  			<div className="timeline-line" id="third"></div>
-			  		</div>
-			  	</div>
-	  			<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11 categories">
-					<Category query="discover/movie" name="Popular" />
-					<Category query="movie/upcoming" name="Upcoming" />
-					<Category query="movie/top_rated" name="Top Rated" />
+			<div>
+			  	<div className="row">
+				  	<div className="col-xs-1 col-sm-2 col-md-2 col-lg-1">
+				  		<div className="timeline">
+				  			<div className="timeline-dot">
+				  				<img src={movieimg} />
+				  			</div>
+				  			<div className="timeline-line"></div>
+				  			<div className="timeline-dot" id="second">
+				  				<img src={movieimg} />
+				  			</div>
+				  			<div className="timeline-line" id="second"></div>
+				  			<div className="timeline-dot" id="third">
+				  				<img src={movieimg} />
+				  			</div>
+				  			<div className="timeline-line" id="third"></div>
+				  		</div>
+				  	</div>
+		  			<div className="col-xs-11 col-sm-10 col-md-10 col-lg-11 categories">
+						<Category query="discover/movie" name="Popular" />
+						<Category query="movie/upcoming" name="Upcoming" />
+						<Category query="movie/top_rated" name="Top Rated" />
+						<Category query="genre/28/movies" name="Action" />
+					</div>
 				</div>
+				<Footer />
 			</div>
 		);
 
@@ -314,6 +352,6 @@ ReactDOM.render(
 	      	<Route exact path="/" component={App}/>
 	      	<Route path="/movie/:id" component={MoviePage}/>
 	    </div>
-	  </Router>,
+	</Router>,
 	document.getElementById('app')
 )
