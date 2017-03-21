@@ -132,6 +132,10 @@ h3 {
 	margin-left:15px;
 	margin-right:15px;
 }
+.movie:hover img {
+	transform: scale(1.035);
+	transition: all .1s ease-in;
+}
 .category {
 	margin-bottom: 34px;
 }
